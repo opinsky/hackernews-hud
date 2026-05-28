@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker News AR</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at center, #1e1e30 0%, #0c0c12 100%);
+        color: #e0e0e0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow: hidden;
+      }
+      .card {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 40px 60px;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        max-width: 90%;
+        width: 320px;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, #ff6600 0%, #ff8833 100%);
+        color: #fff;
+        font-size: 32px;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        margin: 0 auto 20px;
+        box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
+      }
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: #fff;
+        letter-spacing: -0.5px;
+      }
+      .subtitle {
+        font-size: 13px;
+        color: #ff6600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 24px;
+        font-weight: 600;
+      }
+      .version {
+        font-size: 12px;
+        color: #666;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 4px 12px;
+        border-radius: 12px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo">Y</div>
+      <h1 class="title">Hacker News</h1>
+      <div class="subtitle">AR Edition</div>
+      <div class="version" id="version">v--</div>
+    </div>
+
+    <script>
+      // Load version from app.json
+      fetch('./app.json')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('version').textContent = 'v' + data.version;
+        })
+        .catch(() => {
+          document.getElementById('version').textContent = 'v0.1.0';
+        });
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

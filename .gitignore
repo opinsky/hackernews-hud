@@ -1,0 +1,7 @@
+node_modules/
+.env
+.DS_Store
+glasses_20260528110146.png
+glasses_20260528110120.png
+hackernews-hud.ehpk
+dist/
